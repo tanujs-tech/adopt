@@ -23,34 +23,32 @@ const styles = theme => ({
 function DogCard (props) {
   const { classes } = props
   return (
-    <Paper className={classes.paper}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={props.image}
-          title='Contemplative Reptile'
-        />
-        <CardContent>
-          <Typography variant='headline' component='h2'>
-            {props.name}
-          </Typography>
-          <Typography variant='headline' component='p'>
-            {props.age}
-          </Typography>
-          <Typography component='p'>
-            {props.description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size='small' color='primary'>
-            Share
-          </Button>
-          <Button size='small' color='primary'>
-            Learn More
-          </Button>
-        </CardActions>
-      </Card>
-    </Paper>
+    <Card className={classes.card}>
+      <CardMedia
+        className={classes.media}
+        image={props.image}
+        title='Contemplative Reptile'
+      />
+      <CardContent>
+        <Typography variant='headline' component='h2'>
+          {props.name}
+        </Typography>
+        <Typography variant='headline' component='p'>
+          {props.age}
+        </Typography>
+        <Typography component='p'>
+          {props.description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size='small' color='primary'>
+          Share
+        </Button>
+        <Button size='small' color='primary'>
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
   )
 }
 
