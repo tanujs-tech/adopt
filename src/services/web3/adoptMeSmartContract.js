@@ -1,11 +1,6 @@
-import { adoptMeSmartContractAbi, adoptMeSmartContractAddress } from './adoptMeSmartContractData'
-
-const AdoptMe = window.web3js.eth.contract(JSON.parse(adoptMeSmartContractAbi));
-const contractInstance = AdoptMe.at(adoptMeSmartContractAddress);
-
 export const addShelter = (name, physicalAddress, registrationId, metadataIPFSHash, shelterOwner) => (
   new Promise((resolve, reject) => (
-    contractInstance.addShelter.sendTransaction(
+    window.adoptMeContractInstance.addShelter.sendTransaction(
       name,
       physicalAddress,
       registrationId,
@@ -18,7 +13,7 @@ export const addShelter = (name, physicalAddress, registrationId, metadataIPFSHa
 
 export const addPet = (shelterId, petMetadataIPFS, imageIPFSHash) => (
   new Promise((resolve, reject) => (
-    contractInstance.addPet.sendTransaction(
+    window.adoptMeContractInstance.addPet.sendTransaction(
       shelterId,
       petMetadataIPFS,
       imageIPFSHash,
@@ -29,7 +24,7 @@ export const addPet = (shelterId, petMetadataIPFS, imageIPFSHash) => (
 
 export const addAdoptionRequestForPet = (shelterId, petId, amountRequired) => (
   new Promise((resolve, reject) => (
-    contractInstance.addAdoptionRequestForPet.sendTransaction(
+    window.adoptMeContractInstance.addAdoptionRequestForPet.sendTransaction(
       shelterId,
       petId,
       amountRequired,
@@ -40,7 +35,7 @@ export const addAdoptionRequestForPet = (shelterId, petId, amountRequired) => (
 
 export const createAdoptionRequest = (shelterId, petMetadataIPFS, imageIPFSHash, amountRequired) => (
   new Promise((resolve, reject) => (
-    contractInstance.createAdoptionRequest.sendTransaction(
+    window.adoptMeContractInstance.createAdoptionRequest.sendTransaction(
       shelterId,
       petMetadataIPFS,
       imageIPFSHash,
@@ -50,9 +45,9 @@ export const createAdoptionRequest = (shelterId, petMetadataIPFS, imageIPFSHash,
   ))
 )
 
-export const adoptPet = adoptionRequestId => (
+export const adoptPet = (adoptionRequestId, value) => (
   new Promise((resolve, reject) => (
-    contractInstance.createAdoptionRequest.sendTransaction(
+    window.adoptMeContractInstance.createAdoptionRequest.sendTransaction(
       adoptionRequestId,
       (error, result) => error ? reject(error) : resolve(result)
     )
@@ -80,13 +75,13 @@ function adoptionRequestParser(request) {
 }
 
 const getPet = id => new Promise((resolve, reject) => {
-  contractInstance.pets.call(id, (error, pet) => {
+  window.adoptMeContractInstance.pets.call(id, (error, pet) => {
     error ? reject(error) : resolve(pet)
   })
 })
 
 const getAdoptionRequest = id => new Promise((resolve, reject) => {
-  contractInstance.adoptionRequests.call(id, async (error, adoptionRequestUnparsed) => {
+  window.adoptMeContractInstance.adoptionRequests.call(id, async (error, adoptionRequestUnparsed) => {
     if (!error) {
       try {
         const adoptionRequest = adoptionRequestParser(adoptionRequestUnparsed)
@@ -120,7 +115,7 @@ const getAdoptionRequests = async (ids) => new Promise((resolve, reject) => {
 
 export const getPendingAdoptionRequest = async () => (
   new Promise((resolve, reject) => (
-    contractInstance.getPendingAdoptionRequest.call(async (error, adoptionRequestIds) => {
+    window.adoptMeContractInstance.getPendingAdoptionRequest.call(async (error, adoptionRequestIds) => {
       if (!error) {
         const adoptionRequests = await getAdoptionRequests(adoptionRequestIds)
         resolve(adoptionRequests)
@@ -133,7 +128,7 @@ export const getPendingAdoptionRequest = async () => (
 
 export const getUserAdoption = async () => (
   new Promise((resolve, reject) => (
-    contractInstance.getAllAdoptionsForAdopter.call(async (error, adoptionRequestIds) => {
+    window.adoptMeContractInstance.getAllAdoptionsForAdopter.call(async (error, adoptionRequestIds) => {
       if (!error) {
         const adoptionRequests = await getAdoptionRequests(adoptionRequestIds)
         resolve(adoptionRequests)
@@ -146,7 +141,7 @@ export const getUserAdoption = async () => (
 
 export const getShelterId = async walletAddress => (
   new Promise((resolve, reject) => (
-    contractInstance.getShelterId.call(walletAddress, async (error, shelterId) => (
+    window.adoptMeContractInstance.getShelterId.call(walletAddress, async (error, shelterId) => (
       error ? reject(error) : resolve(shelterId)
     ))
   ))
