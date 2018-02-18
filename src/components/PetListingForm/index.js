@@ -8,15 +8,38 @@ import Button from 'material-ui/Button';
 import Save from 'material-ui-icons/Save';
 import { createPetRequest } from '../../actions/pet'
 import { isShelterOwner } from '../../actions/account'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'center'
   },
   formControl: {
     margin: theme.spacing.unit,
+    display: 'flex'
   },
+  card: {
+    width: '80%',
+    maxWidth: 400,
+    margin: 10,
+  },
+  submitButton: {
+    display: 'flex',
+    justifyContent:'center',
+    margin: 20
+  },
+  media: {
+    height: 80,
+    width: 80,
+    margin: 10,
+    backgroundColor: 'lightBlue'
+  },
+  profilePic: {
+    display: 'flex'
+  }
 });
 
 class PetListingForm extends React.Component {
@@ -29,9 +52,14 @@ class PetListingForm extends React.Component {
     profile: '',
     medical_condition: '',
     file: null,
+    profileImage: '',
+    description: '',
+    criticality_of_adoption:'',
+    minimumAmount: ''
   };
-
+  
   handleChange = event => {
+    console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -59,33 +87,74 @@ class PetListingForm extends React.Component {
 
     return (
       <div className={classes.container}>
-        <form onSubmit={this.handleFormSubmit}>
-          <FormControl className={classes.formControl} aria-describedby="name-helper-text">
-            <InputLabel htmlFor="name-helper">Name</InputLabel>
-            <Input required name="name" value={this.state.name} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Name of the pet</FormHelperText>
-          </FormControl>
+        <Card className={classes.card}>
+          <form onSubmit={this.handleFormSubmit}>
+          <div className={classes.profilePic}>
+          <CardMedia
+        className={classes.media}
+         image={this.state.profileImage}
+        title='Contemplative Reptile'
+      />
+          <Button
+                containerElement='label' // <-- Just add me!
+                label='My Label'>
+                <input type="file" value={this.state.profileImage} onChange={this.handleChange}/>
+              </Button>
+              </div>
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Name</InputLabel>
+              <Input required name="name" value={this.state.name} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Name of the pet</FormHelperText>
+            </FormControl>
 
-          <FormControl className={classes.formControl} aria-describedby="name-helper-text">
-            <InputLabel htmlFor="name-helper">Age</InputLabel>
-            <Input required name="age" value={this.state.age} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Age of pet</FormHelperText>
-          </FormControl>
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Age</InputLabel>
+              <Input required name="age" value={this.state.age} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Age of pet</FormHelperText>
+            </FormControl>
 
-          <FormControl className={classes.formControl} aria-describedby="name-helper-text">
-            <InputLabel htmlFor="name-helper">Risk </InputLabel>
-            <Input required name="risk" value={this.state.risk} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Criticality of adoption</FormHelperText>
-          </FormControl>
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Description</InputLabel>
+              <Input required name="description" value={this.state.description} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Description of pet</FormHelperText>
+            </FormControl>
+
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Breed</InputLabel>
+              <Input required name="breed" value={this.state.breed} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Breed of pet</FormHelperText>
+            </FormControl>
+
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Risk </InputLabel>
+              <Input required name="risk" value={this.state.risk} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Criticality of adoption</FormHelperText>
+            </FormControl>
+
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Medical Condition</InputLabel>
+              <Input required name="medical_condition" value={this.state.medical_condition} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Medical Condition of pet</FormHelperText>
+            </FormControl>
+
+            <FormControl className={classes.formControl} aria-describedby="name-helper-text">
+              <InputLabel htmlFor="name-helper">Minimum Sponsor Amount</InputLabel>
+              <Input required name="minimumAmount" value={this.state.minimumAmount} onChange={this.handleChange} />
+              <FormHelperText id="name-helper-text">Minimum Sponsor Amount</FormHelperText>
+            </FormControl>           
 
 
           <input type="file" name="myImage" accept="image/*" onChange={ (e) => this.handleFileChange(e.target.files[0]) }/>
 
-          <Button type='submit' className={classes.button} variant="raised" size="small">
-            <Save className={classes.leftIcon} />
-            Save
-          </Button>
-        </form>
+            <div className={classes.submitButton}>
+              <Button type='submit' className={classes.button} variant="raised" size="small">
+                <Save className={classes.leftIcon} />
+                Save
+            </Button>
+             
+            </div>
+          </form>
+        </Card>
       </div>
     );
   }

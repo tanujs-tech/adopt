@@ -7,7 +7,7 @@ import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import { Link } from 'react-router-dom'
-
+import paws from '../../../src/paws.png'
 // import MenuIcon from 'material-ui-icons/Menu'
 import Logo from './logo.png'
 
@@ -28,10 +28,10 @@ function ButtonAppBar(props) {
   const { classes } = props
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position='static' title={<img src={paws}/>}> 
         <Toolbar>
           <Typography variant='title' color='inherit' className={classes.flex}>
-            SaveMe
+            Paws on the block
           </Typography>
           <Button component={Link} to="/add-pet">Add Pet</Button>
           <Button component={Link} to="/home">Home</Button>
