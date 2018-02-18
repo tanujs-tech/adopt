@@ -12,15 +12,15 @@ const initialState = {
 const shelter = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_SHELTER:
-      return Object.assign(state, {
+      return Object.assign({}, state, {
         isFetching: true,
       });
     case CREATE_SHELTER_SUCCESS:
-      return Object.assign(state, {
+      return Object.assign({}, state, {
         isFetching: false,
       });
     case CREATE_SHELTER_FAILURE:
-      return Object.assign(state, {
+      return Object.assign({}, state, {
         isFetching: false,
         error: action.error
       })

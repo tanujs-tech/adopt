@@ -39,7 +39,7 @@ class ShelterRegistrationForm extends React.Component {
         this.state.address,
         this.state.registration_id,
         'metadata IPFS hash',
-        '0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef'
+        '0xf17f52151EbEF6C7334FAD080c5704D77216b732'
       )
     }
   }

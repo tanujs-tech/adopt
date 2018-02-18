@@ -1,119 +1,6 @@
 const web3 = {
-  contractAddress: '0x345ca3e014aaf5dca488057592ee47305d9b3e10',
+  contractAddress: '0xf204a4ef082f5c04bb89f7d5e6568b796096735a',
   contractAbi: [
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "shelterId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getAllAdoptionsForShelter",
-      "outputs": [
-        {
-          "name": "allAdoptionRequest",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "shelterId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getPendingAdoptionsForShelter",
-      "outputs": [
-        {
-          "name": "pendingAdoptionRequest",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getPendingAdoptionRequest",
-      "outputs": [
-        {
-          "name": "pendingRequests",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getNonCompletedAdoptionRequest",
-      "outputs": [
-        {
-          "name": "nonCompletedRequests",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getShelterId",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "getCompletedAdoptionRequest",
-      "outputs": [
-        {
-          "name": "completedRequests",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "shelterId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getAllAnimalsForShelter",
-      "outputs": [
-        {
-          "name": "allAdoptionRequest",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
     {
       "constant": true,
       "inputs": [],
@@ -129,55 +16,17 @@ const web3 = {
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getAllAdoptionsForAdopter",
-      "outputs": [
-        {
-          "name": "adoptedPets",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
+      "constant": false,
       "inputs": [
         {
-          "name": "petId",
-          "type": "uint256"
+          "name": "newOwner",
+          "type": "address"
         }
       ],
-      "name": "getAllAdoptionRequestForPet",
-      "outputs": [
-        {
-          "name": "adoptionRequestsForPet",
-          "type": "uint256[]"
-        }
-      ],
+      "name": "transferOwnership",
+      "outputs": [],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "shelterId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getCompletedAdoptionsForShelter",
-      "outputs": [
-        {
-          "name": "completeAdoptionRequest",
-          "type": "uint256[]"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -196,42 +45,6 @@ const web3 = {
       ],
       "name": "OwnershipTransferred",
       "type": "event"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "shelterId",
-          "type": "uint256"
-        },
-        {
-          "name": "petId",
-          "type": "uint256"
-        },
-        {
-          "name": "amountRequired",
-          "type": "uint256"
-        }
-      ],
-      "name": "addAdoptionRequestForPet",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
     },
     {
       "constant": false,
@@ -289,14 +102,22 @@ const web3 = {
       "constant": false,
       "inputs": [
         {
-          "name": "adoptionRequestId",
+          "name": "shelterId",
+          "type": "uint256"
+        },
+        {
+          "name": "petId",
+          "type": "uint256"
+        },
+        {
+          "name": "amountRequired",
           "type": "uint256"
         }
       ],
-      "name": "adoptPet",
+      "name": "addAdoptionRequestForPet",
       "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
+      "payable": false,
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -323,6 +144,185 @@ const web3 = {
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "adoptionRequestId",
+          "type": "uint256"
+        }
+      ],
+      "name": "adoptPet",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getPendingAdoptionRequest",
+      "outputs": [
+        {
+          "name": "pendingRequests",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getCompletedAdoptionRequest",
+      "outputs": [
+        {
+          "name": "completedRequests",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNonCompletedAdoptionRequest",
+      "outputs": [
+        {
+          "name": "nonCompletedRequests",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "petId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAllAdoptionRequestForPet",
+      "outputs": [
+        {
+          "name": "adoptionRequestsForPet",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAllAdoptionsForAdopter",
+      "outputs": [
+        {
+          "name": "adoptedPets",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getShelterId",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "shelterId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAllAnimalsForShelter",
+      "outputs": [
+        {
+          "name": "allAdoptionRequest",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "shelterId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAllAdoptionsForShelter",
+      "outputs": [
+        {
+          "name": "allAdoptionRequest",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "shelterId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getPendingAdoptionsForShelter",
+      "outputs": [
+        {
+          "name": "pendingAdoptionRequest",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "shelterId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCompletedAdoptionsForShelter",
+      "outputs": [
+        {
+          "name": "completeAdoptionRequest",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     }
   ],

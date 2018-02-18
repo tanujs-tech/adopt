@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import {routes as scenes} from '../routes'
 import AppBar from '../components/app_bar'
 import { startup } from '../actions/startup'
+import {withRouter} from 'react-router-dom';
 
 class App extends Component {
 
@@ -31,4 +32,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   startup: () => dispatch(startup())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -9,8 +9,11 @@ import {
   createPetAdoptionRequestFailure,
   adoptPetRequestSuccess,
   adoptPetRequestFailure,
+  CREATE_PET_AND_ADOPTION_REQUEST,
+  createPetAndAdoptionRequestSuccess,
+  createPetAndAdoptionRequestFailure
 } from '../actions/pet'
-import { addPet, addAdoptionRequestForPet, adoptPet } from '../services/web3/adoptMeSmartContract'
+import { addPet, addAdoptionRequestForPet, adoptPet, createAdoptionRequest } from '../services/web3/adoptMeSmartContract'
 import { sendFilesToIPFS } from '../services/ipfs';
 
 const uploadFile = async media => new Promise(async (resolve, reject) => {
@@ -58,10 +61,10 @@ const uploadJson = async jsonData => new Promise(async (resolve, reject) => {
 
 function * createPetSaga(action) {
   try {
-    const { shelterId, metadata, file } = action;
+    const { shelterId, metadata, profilePic } = action;
 
-    const petMetadataIPFS = yield call(uploadFile, file)
-    const imageIPFSHash= yield call(uploadJson, metadata)
+    const imageIPFSHash = yield call(uploadFile, profilePic)
+    const petMetadataIPFS= yield call(uploadJson, metadata)
 
     yield call(addPet, shelterId, petMetadataIPFS, imageIPFSHash)
     yield put(createPetRequestSuccess());
@@ -87,6 +90,23 @@ function * createPetAdoptionRequestSaga(action) {
   }
 }
 
+function * createPetAndAdoptionRequestSaga(action) {
+  try {
+    const { shelterId, metadata, profilePic, amountRequired } = action;
+
+    const imageIPFSHash = yield call(uploadFile, profilePic)
+    const petMetadataIPFS= yield call(uploadJson, metadata)
+
+    yield call(createAdoptionRequest, shelterId, petMetadataIPFS, imageIPFSHash, amountRequired)
+    yield put(createPetAndAdoptionRequestSuccess());
+  } catch (error) {
+    console.log('Got Error in Pet Adoption Request Creation: ', error);
+    yield put(createPetAndAdoptionRequestFailure({
+      message: 'Got Error in Request!',
+    }));
+  }
+}
+
 function * createAdoptPetRequestSaga(action) {
   try {
     const { adoptionRequestId, value } = action;
@@ -107,6 +127,10 @@ export function * watchCreatePetSaga() {
 
 export function * watchCreatePetAdoptionRequestSaga() {
   yield takeLatest(CREATE_PET_ADOPTION_REQUEST, createPetAdoptionRequestSaga)
+}
+
+export function * watchCreatePetAndAdoptionRequestSaga() {
+  yield takeLatest(CREATE_PET_AND_ADOPTION_REQUEST, createPetAndAdoptionRequestSaga)
 }
 
 export function * watchAdoptPetRequestSaga() {
