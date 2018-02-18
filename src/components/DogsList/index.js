@@ -50,8 +50,8 @@ function DogList (props) {
     <div className={classes.root}>
       <GridList className={classes.gridList} >
         {
-        dogsList.map(dog => {
-          return <DogCard name={dog.name} image={dog.image} description={dog.description} age={dog.age} />
+        dogsList.map((dog, index) => {
+          return <DogCard key={index} name={dog.name} image={dog.image} description={dog.description} age={dog.age} details={dog} />
         })
       }
       </GridList>
