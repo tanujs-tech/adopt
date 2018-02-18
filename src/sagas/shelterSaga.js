@@ -8,7 +8,7 @@ import { addShelter } from '../services/web3/adoptMeSmartContract'
 
 function * createShelterSaga(action) {
   try {
-    const { name, physicalAddress, registrationId, metadata, shelterOwner } = action;
+    const { name, physicalAddress, registrationId, shelterOwner } = action;
     yield call(addShelter, name, physicalAddress, registrationId, 'rightNowEmpty', shelterOwner)
     yield put(createShelterSuccess());
   } catch (error) {

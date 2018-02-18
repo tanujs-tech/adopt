@@ -9,11 +9,11 @@ const initialState = {
   error: null,
 }
 
-const account = (state = initialState, action) => {
+const shelter = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_SHELTER:
       return Object.assign(state, {
-        isFetching: false,
+        isFetching: true,
       });
     case CREATE_SHELTER_SUCCESS:
       return Object.assign(state, {
@@ -29,4 +29,4 @@ const account = (state = initialState, action) => {
   }
 }
 
-  export default account
+  export default shelter
