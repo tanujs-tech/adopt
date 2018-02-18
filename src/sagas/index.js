@@ -8,6 +8,7 @@ import {
   watchAdoptPetRequestSaga,
   watchCreatePetAndAdoptionRequestSaga
 } from './petSaga'
+import { watchGetPendingAdoptionRequestSaga } from './adoptionRequestSaga'
 
 export function * rootSaga() {
   yield all([
@@ -18,6 +19,7 @@ export function * rootSaga() {
     watchCreatePetAdoptionRequestSaga(),
     watchAdoptPetRequestSaga(),
     watchCheckShelterOwner(),
-    watchCreatePetAndAdoptionRequestSaga()
+    watchCreatePetAndAdoptionRequestSaga(),
+    watchGetPendingAdoptionRequestSaga()
   ])
 }
