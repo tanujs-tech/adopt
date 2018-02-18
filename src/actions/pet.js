@@ -10,6 +10,10 @@ export const ADOPT_PET_REQUEST = 'ADOPT_PET_REQUEST';
 export const ADOPT_PET_REQUEST_SUCCESS = 'ADOPT_PET_REQUEST_SUCCESS';
 export const ADOPT_PET_REQUEST_FAILURE = 'ADOPT_PET_REQUEST_FAILURE';
 
+export const CREATE_PET_AND_ADOPTION_REQUEST = 'CREATE_PET_AND_ADOPTION_REQUEST';
+export const CREATE_PET_AND_ADOPTION_REQUEST_SUCCESS = 'CREATE_PET_AND_ADOPTION_REQUEST_SUCCESS';
+export const CREATE_PET_AND_ADOPTION_REQUEST_FAILURE = 'CREATE_PET_AND_ADOPTION_REQUEST_FAILURE';
+
 export const createPetRequest = (name, age, risk, breed, file, shelterId) => ({
   type: CREATE_PET_REQUEST,
   metadata: {
@@ -59,5 +63,27 @@ export const adoptPetRequestSuccess = () =>({
 
 export const adoptPetRequestFailure = error =>({
   type: ADOPT_PET_REQUEST_FAILURE,
+  error,
+})
+
+export const createPetAndAdoptionRequest = (name, age, risk, breed, file, shelterId, amountRequired) =>({
+  type: CREATE_PET_AND_ADOPTION_REQUEST,
+  metadata: {
+    name,
+    age,
+    risk,
+    breed
+  },
+  profilePic: file,
+  shelterId,
+  amountRequired
+})
+
+export const createPetAndAdoptionRequestSuccess = () =>({
+  type: CREATE_PET_AND_ADOPTION_REQUEST_SUCCESS,
+})
+
+export const createPetAndAdoptionRequestFailure = error =>({
+  type: CREATE_PET_AND_ADOPTION_REQUEST_FAILURE,
   error,
 })

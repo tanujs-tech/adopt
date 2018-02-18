@@ -1,4 +1,5 @@
 import web3 from './adoptMeSmartContractData';
+import { getFileFromIPFS } from "../ipfs";
 
 if(window.web3) {
   const AdoptMe = window.web3.eth.contract(web3.contractAbi);
@@ -83,9 +84,31 @@ function adoptionRequestParser(request) {
   }
 }
 
+function petParser(request) {
+  return {
+    id: request[0],
+    shelterId: request[1],
+    metadataIPFSHash: hexToString(request[2]),
+    imageIPFSHash: hexToString(request[3]),
+  }
+}
+
 const getPet = id => new Promise((resolve, reject) => {
-  window.adoptMeContractInstance.pets.call(id, (error, pet) => {
-    error ? reject(error) : resolve(pet)
+  window.adoptMeContractInstance.pets.call(id, async (error, petUnparsed) => {
+    if (!error) {
+      const pet = petParser(petUnparsed);
+
+      const metadata = await getFileFromIPFS(pet.metadataIPFSHash)
+      const image = await getFileFromIPFS(pet.imageIPFSHash)
+
+      pet.metadata = metadata;
+      pet.pic = image;
+
+      resolve(pet)
+    } else {
+      console.log('Error in Pet Retrievel: ', error);
+      reject(error)
+    }
   })
 })
 

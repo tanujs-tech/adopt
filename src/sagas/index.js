@@ -2,7 +2,12 @@ import { all } from 'redux-saga/effects'
 import { watchStartup } from './startupSaga';
 import { watchGetAccount, watchCheckShelterOwner } from './accountSaga';
 import { watchCreateShelterSaga } from './shelterSaga'
-import { watchCreatePetSaga, watchCreatePetAdoptionRequestSaga, watchAdoptPetRequestSaga } from './petSaga'
+import {
+  watchCreatePetSaga,
+  watchCreatePetAdoptionRequestSaga,
+  watchAdoptPetRequestSaga,
+  watchCreatePetAndAdoptionRequestSaga
+} from './petSaga'
 
 export function * rootSaga() {
   yield all([
@@ -12,6 +17,7 @@ export function * rootSaga() {
     watchCreatePetSaga(),
     watchCreatePetAdoptionRequestSaga(),
     watchAdoptPetRequestSaga(),
-    watchCheckShelterOwner()
+    watchCheckShelterOwner(),
+    watchCreatePetAndAdoptionRequestSaga()
   ])
 }
