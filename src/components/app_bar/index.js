@@ -7,9 +7,9 @@ import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import { Link } from 'react-router-dom'
-import paws from '../../../src/paws.png'
 // import MenuIcon from 'material-ui-icons/Menu'
 import Logo from './logo.png'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 
 const styles = {
   root: {
@@ -21,6 +21,17 @@ const styles = {
   menuButton: {
     marginLeft: -12,
     marginRight: 20
+  },
+  media: {
+    height:40,
+    width: 40,
+    marginRight:20
+  },
+  header: {
+    backgroundColor:'darkred'
+  },
+  headerButton: {
+    color: 'white'
   }
 }
 
@@ -28,13 +39,18 @@ function ButtonAppBar(props) {
   const { classes } = props
   return (
     <div className={classes.root}>
-      <AppBar position='static' title={<img src={paws}/>}> 
+      <AppBar className={classes.header} position='static' title={<img src="https://unsplash.it/40/40" />}>
         <Toolbar>
+          <CardMedia
+            className={classes.media}
+            image={Logo}
+            title='Contemplative Reptile'
+          />
           <Typography variant='title' color='inherit' className={classes.flex}>
             Paws on the block
           </Typography>
-          <Button component={Link} to="/add-pet">Add Pet</Button>
-          <Button component={Link} to="/home">Home</Button>
+          <Button className={classes.headerButton} component={Link} to="/add-pet">Add Pet</Button>
+          <Button className={classes.headerButton} component={Link} to="/home">Home</Button>
         </Toolbar>
       </AppBar>
     </div>
