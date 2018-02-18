@@ -7,6 +7,7 @@ import Button from 'material-ui/Button';
 import Save from 'material-ui-icons/Save';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Paper from 'material-ui/Paper'
+import Loader from '../Loader'
 
 const styles = theme => ({
   container: {
@@ -32,7 +33,13 @@ const styles = theme => ({
     paddingTop: 16,
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 3
-  })
+  }),
+  loader: {
+    display: 'flex',
+    height: '100%',
+    width: '100%'
+
+  }
 });
 
 class ShelterRegistrationForm extends React.Component {
@@ -64,7 +71,6 @@ class ShelterRegistrationForm extends React.Component {
 
   render() {
     const { classes } = this.props;
-
     return (
       <div>
          <Paper className={classes.paper} elevation={4} style={{marginTop:0}}>
