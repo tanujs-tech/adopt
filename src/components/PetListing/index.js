@@ -1,7 +1,6 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import DogsList from '../DogsList'
-import PetFilterBar from '../PetFilterBar'
 import Paper from 'material-ui/Paper'
 
 const styles = theme => ({
@@ -12,15 +11,12 @@ const styles = theme => ({
   })
 })
 
-function AdopterLandingPage (props) {
+function PetListing (props) {
   const { classes } = props
   return (
     <div>
       <Paper className={classes.paper} elevation={4} style={{marginTop:0}}>
-        Home
-      </Paper>
-      <Paper className={classes.paper} elevation={4}>
-        <PetFilterBar />
+        Pet Listing
       </Paper>
       <Paper className={classes.paper} elevation={4}>
         <DogsList />
@@ -29,4 +25,4 @@ function AdopterLandingPage (props) {
   )
 }
 
-export default withStyles(styles)(AdopterLandingPage)
+export default withStyles(styles)(PetListing)

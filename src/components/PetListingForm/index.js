@@ -9,7 +9,7 @@ import Save from 'material-ui-icons/Save';
 import { createPetRequest } from '../../actions/pet'
 import { isShelterOwner } from '../../actions/account'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
-
+import Paper from 'material-ui/Paper'
 
 const styles = theme => ({
   container: {
@@ -39,7 +39,12 @@ const styles = theme => ({
   },
   profilePic: {
     display: 'flex'
-  }
+  },
+  paper: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: theme.spacing.unit * 3
+  })
 });
 
 class PetListingForm extends React.Component {
@@ -86,6 +91,10 @@ class PetListingForm extends React.Component {
     const { classes } = this.props;
 
     return (
+      <div>
+         <Paper className={classes.paper} elevation={4} style={{marginTop:0}}>
+        Add Pet
+      </Paper>
       <div className={classes.container}>
         <Card className={classes.card}>
           <form onSubmit={this.handleFormSubmit}>
@@ -155,6 +164,7 @@ class PetListingForm extends React.Component {
             </div>
           </form>
         </Card>
+      </div>
       </div>
     );
   }

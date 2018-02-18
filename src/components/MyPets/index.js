@@ -15,6 +15,9 @@ function MyPets (props) {
   const { classes } = props
   return (
     <div>
+      <Paper className={classes.paper} elevation={4} style={{marginTop:0}}>
+        My Pets
+      </Paper>
       <Paper className={classes.paper} elevation={4}>
         <DogsList />
       </Paper>
