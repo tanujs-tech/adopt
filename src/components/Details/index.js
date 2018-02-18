@@ -49,7 +49,7 @@ class Details extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Details</Button>
+        <Button onClick={this.handleClickOpen} color='primary' size='small'>Details</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -84,7 +84,7 @@ class Details extends React.Component {
               </Card>
               <Card style={{ marginBottom: '10px'}}>
                 <CardContent>
-                  <Typography className="details-heading">breed</Typography>
+                  <Typography className="details-heading">{this.props.details.breed}</Typography>
                   <Typography component="p" className="details-body">
                     Breed
                 </Typography>
@@ -92,7 +92,7 @@ class Details extends React.Component {
               </Card>
               <Card style={{ marginBottom: '10px'}}>
                 <CardContent>
-                  <Typography className="details-heading">breed</Typography>
+                  <Typography className="details-heading">{this.props.details.criticality_of_adoption}</Typography>
                   <Typography component="p" className="details-body">
                     Criticality Of Adoption
                 </Typography>
@@ -100,7 +100,7 @@ class Details extends React.Component {
               </Card>
               <Card style={{ marginBottom: '10px'}}>
                 <CardContent>
-                  <Typography className="details-heading">breed</Typography>
+                  <Typography className="details-heading">{this.props.details.medical_condition}</Typography>
                   <Typography component="p" className="details-body">
                     Medical Condition
                 </Typography>
@@ -108,17 +108,9 @@ class Details extends React.Component {
               </Card>
               <Card style={{ marginBottom: '10px'}}>
                 <CardContent>
-                  <Typography className="details-heading">breed</Typography>
+                  <Typography className="details-heading">{this.props.details.minimum_sponsor_amount}</Typography>
                   <Typography component="p" className="details-body">
                     Minimum Sponsor Amount
-                </Typography>
-                </CardContent>
-              </Card>
-              <Card style={{ marginBottom: '10px'}}>
-                <CardContent>
-                  <Typography className="details-heading">breed</Typography>
-                  <Typography component="p" className="details-body">
-                    Profile Picture
                 </Typography>
                 </CardContent>
               </Card>

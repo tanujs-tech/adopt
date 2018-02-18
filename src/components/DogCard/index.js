@@ -33,8 +33,8 @@ function DogCard(props) {
         title='Contemplative Reptile'
       />
       <CardContent>
-        <Typography variant='headline' component='h2'>
-          {props.name}
+        <Typography variant='headline' component='h2' style={{color: 'darkred'}}>
+          {props.name} ({props.minimum_sponsor_amount})
         </Typography>
         <Typography variant='headline' component='p'>
           {props.age}
@@ -45,10 +45,7 @@ function DogCard(props) {
       </CardContent>
       <CardActions>
         <Button size='small' color='primary'>
-          Share
-        </Button>
-        <Button size='small' color='primary'>
-          Learn More
+          Sponsor
         </Button>
         <Details details={props.details}/>
       </CardActions>

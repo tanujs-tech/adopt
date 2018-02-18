@@ -30,33 +30,45 @@ const dogsList = [
     name: 'LLLLLLLLLL',
     image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
     age: 'aaaaa',
-    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '15'
   },
   {
     name: 'rrrrrrrr',
     image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
     age: 'aaaaa',
-    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '20'
   },
   {
     name: 'ffffffffffffff',
     image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
     age: 'aaaaa',
-    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '25'
   }
 ]
 
-function DogList (props) {
+function DogList(props) {
   const { classes } = props
 
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} >
         {
-        dogsList.map((dog, index) => {
-          return <DogCard key={index} name={dog.name} image={dog.image} description={dog.description} age={dog.age} details={dog} />
-        })
-      }
+          dogsList.map((dog, index) => {
+            return <DogCard key={index} name={dog.name} image={dog.image} description={dog.description} age={dog.age} minimum_sponsor_amount={dog.minimum_sponsor_amount} details={dog} />
+          })
+        }
       </GridList>
     </div>
   )
