@@ -10,6 +10,7 @@ import reducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
 import { reducer as formReducer } from 'redux-form'
 import { rootSaga } from './sagas'
+import './web3Init';
 
 const sagaMiddleware = createSagaMiddleware()
 

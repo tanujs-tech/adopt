@@ -1,12 +1,21 @@
+import web3 from './adoptMeSmartContractData';
+
+if(window.web3) {
+  const AdoptMe = window.web3.eth.contract(web3.contractAbi);
+  window.adoptMeContractInstance = AdoptMe.at(web3.contractAddress);
+}
+
 export const addShelter = (name, physicalAddress, registrationId, metadataIPFSHash, shelterOwner) => (
   new Promise((resolve, reject) => (
-    window.adoptMeContractInstance.addShelter.sendTransaction(
+    window.adoptMeContractInstance.addShelter(
       name,
       physicalAddress,
       registrationId,
       metadataIPFSHash,
       shelterOwner,
-      (error, result) => error ? reject(error) : resolve(result)
+      (error, result) => (
+        error ? reject(error) : resolve(result)
+      )
     )
   ))
 )

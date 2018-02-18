@@ -1,9 +1,9 @@
 export const getWalletAddressAndBalance = () => (
   new Promise(async (resolve, reject) => {
-    window.web3js.eth.getAccounts((error, accounts) => {
+    window.web3.eth.getAccounts((error, accounts) => {
       if (!error) {
         const walletAddress = accounts[0];
-        window.web3js.eth.getBalance(walletAddress, (errorInBalance, balance) => {
+        window.web3.eth.getBalance(walletAddress, (errorInBalance, balance) => {
           if(!errorInBalance) {
             resolve({
               walletAddress,

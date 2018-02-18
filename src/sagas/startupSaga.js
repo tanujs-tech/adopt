@@ -5,7 +5,7 @@ import { START_UP } from '../actions/startup'
 
 function * startup() {
   try {
-    yield call(web3Initialisation);
+    // yield call(web3Initialisation);
     yield put(getAccount());
   } catch (error) {
     console.log('Got Error in startup: ', error);
