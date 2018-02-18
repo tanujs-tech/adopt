@@ -8,8 +8,8 @@ import App from './app'
 import registerServiceWorker from './registerServiceWorker'
 import reducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
-import { initSagas } from './sagas'
 import { reducer as formReducer } from 'redux-form'
+import { rootSaga } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -22,7 +22,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 )
 
-sagaMiddleware.run(initSagas)
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>
