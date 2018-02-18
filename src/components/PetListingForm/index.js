@@ -17,11 +17,15 @@ const styles = theme => ({
   },
 });
 
-class ShelterRegistrationForm extends React.Component {
+class PetListingForm extends React.Component {
   state = {
-    shelter_name: '',
-    address: '',
-    registration_id: ''
+    name: '',
+    age: '',
+    risk: '',
+    breed: '',
+    city: '',
+    profile: '',
+    medical_condition: ''
   };
 
   handleChange = event => {
@@ -41,20 +45,20 @@ class ShelterRegistrationForm extends React.Component {
         <form onSubmit={this.handleFormSubmit}>
           <FormControl className={classes.formControl} aria-describedby="name-helper-text">
             <InputLabel htmlFor="name-helper">Name</InputLabel>
-            <Input required name="shelter_name" value={this.state.name} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Name of the shelter</FormHelperText>
+            <Input required name="name" value={this.state.name} onChange={this.handleChange} />
+            <FormHelperText id="name-helper-text">Name of the pet</FormHelperText>
           </FormControl>
 
           <FormControl className={classes.formControl} aria-describedby="name-helper-text">
-            <InputLabel htmlFor="name-helper">Address</InputLabel>
-            <Input required name="address" value={this.state.name} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Physical address of shelter</FormHelperText>
+            <InputLabel htmlFor="name-helper">Age</InputLabel>
+            <Input required name="age" value={this.state.age} onChange={this.handleChange} />
+            <FormHelperText id="name-helper-text">Age of pet</FormHelperText>
           </FormControl>
 
           <FormControl className={classes.formControl} aria-describedby="name-helper-text">
-            <InputLabel htmlFor="name-helper">Registration ID </InputLabel>
-            <Input required name="registration_id" value={this.state.name} onChange={this.handleChange} />
-            <FormHelperText id="name-helper-text">Registration ID Number</FormHelperText>
+            <InputLabel htmlFor="name-helper">Risk </InputLabel>
+            <Input required name="risk" value={this.state.risk} onChange={this.handleChange} />
+            <FormHelperText id="name-helper-text">Criticality of adoption</FormHelperText>
           </FormControl>
 
           <Button type='submit' className={classes.button} variant="raised" size="small">
@@ -67,8 +71,8 @@ class ShelterRegistrationForm extends React.Component {
   }
 }
 
-ShelterRegistrationForm.propTypes = {
+PetListingForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ShelterRegistrationForm);
+export default withStyles(styles)(PetListingForm);

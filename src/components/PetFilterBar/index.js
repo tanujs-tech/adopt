@@ -27,7 +27,8 @@ class SimpleSelect extends React.Component {
     breed: 'all',
     city: 'all',
     name: 'hai',
-    risk: 'all'
+    risk: 'all',
+    medical_condition: 'no'
   };
 
   handleChange = event => {
@@ -109,6 +110,23 @@ class SimpleSelect extends React.Component {
             <MenuItem value='minor'>minor</MenuItem>
             <MenuItem value='major'>major</MenuItem>
             <MenuItem value='critical'>critical</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="medical_condition">Medical Condition</InputLabel>
+          <Select
+            value={this.state.medical_condition}
+            onChange={this.handleChange}
+            inputProps={{
+              name: 'medical_condition',
+              id: 'medical_condition',
+            }}
+          >
+            <MenuItem value={this.state.medical_condition}>
+              <em>no</em>
+            </MenuItem>
+            <MenuItem value='yes'>Yes</MenuItem>
           </Select>
         </FormControl>
 

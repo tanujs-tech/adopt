@@ -1,6 +1,7 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
 import ShelterRegistrationForm from '../ShelterRegistrationForm'
+import Paper from 'material-ui/Paper'
 
 const styles = theme => ({
   paper: theme.mixins.gutters({
@@ -13,9 +14,9 @@ const styles = theme => ({
 function ShelterDashboard (props) {
   const { classes } = props
   return (
-    <div>
+    <Paper>
       <ShelterRegistrationForm />
-    </div>
+    </Paper>
   )
 }
 
