@@ -8,7 +8,8 @@ import Paper from 'material-ui/Paper'
 
 const styles = theme => ({
   card: {
-    maxWidth: 400
+    maxWidth: 400,
+    margin:10, 
   },
   media: {
     height: 200
