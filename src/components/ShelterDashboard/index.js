@@ -1,7 +1,9 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
-import ShelterRegistrationForm from '../ShelterRegistrationForm'
 import Paper from 'material-ui/Paper'
+import { connect } from 'react-redux'
+import ShelterRegistrationForm from '../ShelterRegistrationForm'
+import { createShelter } from '../../actions/shelter'
 
 const styles = theme => ({
   paper: theme.mixins.gutters({
@@ -15,9 +17,19 @@ function ShelterDashboard (props) {
   const { classes } = props
   return (
     <Paper>
-      <ShelterRegistrationForm />
+      <ShelterRegistrationForm createShelter={props.createShelter} />
     </Paper>
   )
 }
 
-export default withStyles(styles)(ShelterDashboard)
+const mapStateToProps = (state, ownProps) => {
+  return state;
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  createShelter: (name, physicalAddress, registrationId, metadata, walletAddress) => (
+    dispatch(createShelter(name, physicalAddress, registrationId, metadata, walletAddress))
+  )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ShelterDashboard))

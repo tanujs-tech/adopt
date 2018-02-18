@@ -30,7 +30,18 @@ class ShelterRegistrationForm extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault()
-    console.log(this.state, '>>>>>>>>>>>>>>>>')
+    if (this.state.shelter_name.length > 0 &&
+      this.state.address.length > 0 &&
+      this.state.registration_id.length > 0
+    ) {
+      this.props.createShelter(
+        this.state.shelter_name,
+        this.state.address,
+        this.state.registration_id,
+        'metadata IPFS hash',
+        '0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef'
+      )
+    }
   }
 
   render() {
@@ -69,6 +80,7 @@ class ShelterRegistrationForm extends React.Component {
 
 ShelterRegistrationForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  createShelter: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ShelterRegistrationForm);
