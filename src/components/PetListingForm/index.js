@@ -6,7 +6,7 @@ import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 import Save from 'material-ui-icons/Save';
-import { createPetRequest } from '../../actions/pet'
+import { createPetAndAdoptionRequest } from '../../actions/pet'
 import { isShelterOwner } from '../../actions/account'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Paper from 'material-ui/Paper'
@@ -62,7 +62,7 @@ class PetListingForm extends React.Component {
     criticality_of_adoption:'',
     minimumAmount: ''
   };
-  
+
   handleChange = event => {
     console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
@@ -70,19 +70,33 @@ class PetListingForm extends React.Component {
 
   handleFileChange = event => {
     this.setState({ file: event })
+    console.log(event)
+
+    var reader = new FileReader();
+
+    var url = reader.readAsDataURL(event);
+
+    reader.onloadend = function (e) {
+        this.setState({
+          profileImage: [reader.result]
+        })
+      }.bind(this)
   }
 
   handleFormSubmit = event => {
     event.preventDefault()
 
     if(this.props.isShelterOwner) {
-      this.props.createPetRequest(
+      this.props.createPetAndAdoptionRequest(
         this.state.name,
         this.state.age,
         this.state.risk,
         this.state.breed,
+        this.state.medical_condition,
+        this.state.description,
         this.state.file,
-        this.props.shelterId
+        this.props.shelterId,
+        this.state.minimumAmount
       );
     }
   }
@@ -100,14 +114,16 @@ class PetListingForm extends React.Component {
           <form onSubmit={this.handleFormSubmit}>
           <div className={classes.profilePic}>
           <CardMedia
-        className={classes.media}
-         image={this.state.profileImage}
-        title='Contemplative Reptile'
-      />
+            className={classes.media}
+            image={this.state.profileImage}
+            title='Contemplative Reptile'
+          >
+          <img src="images/nature-600-337.jpg" alt="" />
+          </CardMedia>
           <Button
-                containerElement='label' // <-- Just add me!
+                 // <-- Just add me!
                 label='My Label'>
-                <input type="file" value={this.state.profileImage} onChange={this.handleChange}/>
+                <input type="file" name="myImage" accept="image/*" onChange={ (e) => this.handleFileChange(e.target.files[0]) }/>
               </Button>
               </div>
             <FormControl className={classes.formControl} aria-describedby="name-helper-text">
@@ -150,17 +166,14 @@ class PetListingForm extends React.Component {
               <InputLabel htmlFor="name-helper">Minimum Sponsor Amount</InputLabel>
               <Input required name="minimumAmount" value={this.state.minimumAmount} onChange={this.handleChange} />
               <FormHelperText id="name-helper-text">Minimum Sponsor Amount</FormHelperText>
-            </FormControl>           
-
-
-          <input type="file" name="myImage" accept="image/*" onChange={ (e) => this.handleFileChange(e.target.files[0]) }/>
+            </FormControl>
 
             <div className={classes.submitButton}>
               <Button type='submit' className={classes.button} variant="raised" size="small">
                 <Save className={classes.leftIcon} />
                 Save
             </Button>
-             
+
             </div>
           </form>
         </Card>
@@ -182,8 +195,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  createPetRequest: (name, age, risk, breed, file, shelterId) => (
-    dispatch(createPetRequest(name, age, risk, breed, file, shelterId))
+  createPetAndAdoptionRequest: (name, age, risk, breed, medical_condition, description, file, shelterId, amountRequired) => (
+    dispatch(createPetAndAdoptionRequest(name, age, risk, breed, medical_condition, description, file, shelterId, amountRequired))
   )
 });
 

@@ -148,10 +148,13 @@ const getAdoptionRequests = async (ids) => new Promise((resolve, reject) => {
 export const getPendingAdoptionRequest = async () => (
   new Promise((resolve, reject) => (
     window.adoptMeContractInstance.getPendingAdoptionRequest.call(async (error, adoptionRequestIds) => {
+      console.log(adoptionRequestIds)
       if (!error) {
+
         const adoptionRequests = await getAdoptionRequests(adoptionRequestIds)
         resolve(adoptionRequests)
       } else {
+        console.log('Got error in Pending Request id: ', error);
         reject(error)
       }
     })

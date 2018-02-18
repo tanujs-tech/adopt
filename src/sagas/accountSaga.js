@@ -15,6 +15,7 @@ function * getAccountSaga() {
     const data = yield call(getWalletAddressAndBalance);
     yield put(getAccountSuccess(data.walletAddress, data.balance));
 
+    console.log('Checking Shelter Status', data.walletAddress);
     yield call(checkShelterOwner, {walletAddress: data.walletAddress})
 
   } catch (error) {
@@ -29,6 +30,7 @@ function * checkShelterOwner(action) {
   try {
     const shelterIdBigNumber = yield call(getShelterId, action.walletAddress);
     const shelterId = shelterIdBigNumber.toNumber();
+    console.log('Shelter Id: ', shelterId);
     yield put(updateShelterOwner(shelterId > 0, shelterId));
   } catch (error) {
     console.log('Got Error in checkShelterOwner: ', error);

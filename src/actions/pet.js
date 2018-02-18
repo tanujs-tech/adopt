@@ -14,13 +14,15 @@ export const CREATE_PET_AND_ADOPTION_REQUEST = 'CREATE_PET_AND_ADOPTION_REQUEST'
 export const CREATE_PET_AND_ADOPTION_REQUEST_SUCCESS = 'CREATE_PET_AND_ADOPTION_REQUEST_SUCCESS';
 export const CREATE_PET_AND_ADOPTION_REQUEST_FAILURE = 'CREATE_PET_AND_ADOPTION_REQUEST_FAILURE';
 
-export const createPetRequest = (name, age, risk, breed, file, shelterId) => ({
+export const createPetRequest = (name, age, risk, breed, medical_condition, description, file, shelterId) => ({
   type: CREATE_PET_REQUEST,
   metadata: {
     name,
     age,
     risk,
-    breed
+    breed,
+    medical_condition,
+    description
   },
   profilePic: file,
   shelterId,
@@ -66,13 +68,15 @@ export const adoptPetRequestFailure = error =>({
   error,
 })
 
-export const createPetAndAdoptionRequest = (name, age, risk, breed, file, shelterId, amountRequired) =>({
+export const createPetAndAdoptionRequest = (name, age, risk, breed, medical_condition, description, file, shelterId, amountRequired) =>({
   type: CREATE_PET_AND_ADOPTION_REQUEST,
   metadata: {
     name,
     age,
     risk,
-    breed
+    breed,
+    medical_condition,
+    description
   },
   profilePic: file,
   shelterId,

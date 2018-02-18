@@ -1,5 +1,5 @@
 const web3 = {
-  contractAddress: '0xf204a4ef082f5c04bb89f7d5e6568b796096735a',
+  contractAddress: '0x345ca3e014aaf5dca488057592ee47305d9b3e10',
   contractAbi: [
     {
       "constant": true,
@@ -166,7 +166,7 @@ const web3 = {
       "name": "getPendingAdoptionRequest",
       "outputs": [
         {
-          "name": "pendingRequests",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -180,7 +180,7 @@ const web3 = {
       "name": "getCompletedAdoptionRequest",
       "outputs": [
         {
-          "name": "completedRequests",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -194,7 +194,7 @@ const web3 = {
       "name": "getNonCompletedAdoptionRequest",
       "outputs": [
         {
-          "name": "nonCompletedRequests",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -213,7 +213,7 @@ const web3 = {
       "name": "getAllAdoptionRequestForPet",
       "outputs": [
         {
-          "name": "adoptionRequestsForPet",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -227,7 +227,7 @@ const web3 = {
       "name": "getAllAdoptionsForAdopter",
       "outputs": [
         {
-          "name": "adoptedPets",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -260,7 +260,7 @@ const web3 = {
       "name": "getAllAnimalsForShelter",
       "outputs": [
         {
-          "name": "allAdoptionRequest",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -279,7 +279,7 @@ const web3 = {
       "name": "getAllAdoptionsForShelter",
       "outputs": [
         {
-          "name": "allAdoptionRequest",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -298,7 +298,7 @@ const web3 = {
       "name": "getPendingAdoptionsForShelter",
       "outputs": [
         {
-          "name": "pendingAdoptionRequest",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -317,7 +317,7 @@ const web3 = {
       "name": "getCompletedAdoptionsForShelter",
       "outputs": [
         {
-          "name": "completeAdoptionRequest",
+          "name": "",
           "type": "uint256[]"
         }
       ],
@@ -325,7 +325,7 @@ const web3 = {
       "stateMutability": "view",
       "type": "function"
     }
-  ],
+  ]
 };
 
 export default web3;

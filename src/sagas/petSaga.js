@@ -97,6 +97,9 @@ function * createPetAndAdoptionRequestSaga(action) {
     const imageIPFSHash = yield call(uploadFile, profilePic)
     const petMetadataIPFS= yield call(uploadJson, metadata)
 
+    console.log(imageIPFSHash)
+    console.log(petMetadataIPFS)
+
     yield call(createAdoptionRequest, shelterId, petMetadataIPFS, imageIPFSHash, amountRequired)
     yield put(createPetAndAdoptionRequestSuccess());
   } catch (error) {
