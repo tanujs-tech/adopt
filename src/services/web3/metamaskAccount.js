@@ -1,15 +1,23 @@
 export const getWalletAddressAndBalance = () => (
   new Promise(async (resolve, reject) => {
-    try {
-      const accounts = await window.web3js.eth.getAccounts();
-      const walletAddress = accounts[0];
-      const balance = await window.web3js.eth.getBalance(walletAddress);
-      resolve({
-        walletAddress,
-        balance
-      });
-    } catch (error) {
-      reject(error);
-    }
+    window.web3js.eth.getAccounts((error, accounts) => {
+      if (!error) {
+        const walletAddress = accounts[0];
+        window.web3js.eth.getBalance(walletAddress, (errorInBalance, balance) => {
+          if(!errorInBalance) {
+            resolve({
+              walletAddress,
+              balance: balance.toString(10)
+            })
+          } else {
+            console.log('Got Error in GetWalletAddressAndBalance: ', error);
+            reject(errorInBalance);
+          }
+        })
+      } else {
+        console.log('Got Error in GetWalletAddressAndBalance: ', error);
+        reject(error);
+      }
+    });
   })
 );
