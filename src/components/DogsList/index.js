@@ -11,7 +11,7 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.paper
 
   },
   gridList: {
@@ -27,9 +27,9 @@ const styles = theme => ({
 
 const dogsList = [
   {
-    name: 'LLLLLLLLLL',
-    image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
-    age: 'aaaaa',
+    name: 'Boone',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40934225/1/?bust=1518468865',
+    age: '4',
     description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
     breed: 'none',
     criticality_of_adoption: 'none',
@@ -37,9 +37,9 @@ const dogsList = [
     minimum_sponsor_amount: '15'
   },
   {
-    name: 'rrrrrrrr',
-    image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
-    age: 'aaaaa',
+    name: 'Daphne',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40915096/1/?bust=1518243825',
+    age: '6',
     description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
     breed: 'none',
     criticality_of_adoption: 'none',
@@ -47,9 +47,39 @@ const dogsList = [
     minimum_sponsor_amount: '20'
   },
   {
-    name: 'ffffffffffffff',
-    image: 'http://www.hdwallpapersfreedownload.com/uploads/large/animals/dog-image.jpg',
-    age: 'aaaaa',
+    name: 'Thanos',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40817791/1/?bust=1517363395',
+    age: '7',
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '25'
+  },
+  {
+    name: 'Keeva',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40817550/3/?bust=1517362019',
+    age: '8',
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '15'
+  },
+  {
+    name: 'Daphne',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40915096/1/?bust=1518243825',
+    age: '6',
+    description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
+    breed: 'none',
+    criticality_of_adoption: 'none',
+    medical_condition: 'none',
+    minimum_sponsor_amount: '20'
+  },
+  {
+    name: 'Flurry',
+    image: 'https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40912796/2/?bust=1518225611',
+    age: '7',
     description: 'Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica',
     breed: 'none',
     criticality_of_adoption: 'none',
@@ -58,7 +88,7 @@ const dogsList = [
   }
 ]
 
-function DogList(props) {
+function DogList (props) {
   const { classes } = props
 
   return (
