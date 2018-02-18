@@ -52,10 +52,6 @@ class ShelterRegistrationForm extends React.Component {
   }
 }
 
-let RegisterForm = reduxForm({
-    form: 'signIn',
-})(SignInForm);
-
 ShelterRegistrationForm.propTypes = {
   classes: PropTypes.object.isRequired,
 };
