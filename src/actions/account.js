@@ -25,7 +25,8 @@ export const isShelterOwner = walletAddress => ({
   walletAddress
 });
 
-export const updateShelterOwner = isShelterOwner => ({
+export const updateShelterOwner = (isShelterOwner, shelterId) => ({
   type: UPDATE_SHELTER_OWNER,
   isShelterOwner,
+  shelterId
 });

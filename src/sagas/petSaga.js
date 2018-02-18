@@ -58,10 +58,10 @@ const uploadJson = async jsonData => new Promise(async (resolve, reject) => {
 
 function * createPetSaga(action) {
   try {
-    const { shelterId, metadata, file } = action;
+    const { shelterId, metadata, profilePic } = action;
 
-    const petMetadataIPFS = yield call(uploadFile, file)
-    const imageIPFSHash= yield call(uploadJson, metadata)
+    const imageIPFSHash = yield call(uploadFile, profilePic)
+    const petMetadataIPFS= yield call(uploadJson, metadata)
 
     yield call(addPet, shelterId, petMetadataIPFS, imageIPFSHash)
     yield put(createPetRequestSuccess());

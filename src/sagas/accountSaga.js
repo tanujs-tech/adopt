@@ -29,7 +29,7 @@ function * checkShelterOwner(action) {
   try {
     const shelterIdBigNumber = yield call(getShelterId, action.walletAddress);
     const shelterId = shelterIdBigNumber.toNumber();
-    yield put(updateShelterOwner(shelterId > 0));
+    yield put(updateShelterOwner(shelterId > 0, shelterId));
   } catch (error) {
     console.log('Got Error in checkShelterOwner: ', error);
   }

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
 import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 import Save from 'material-ui-icons/Save';
-
+import { createPetRequest } from '../../actions/pet'
+import { isShelterOwner } from '../../actions/account'
 
 const styles = theme => ({
   container: {
@@ -25,16 +27,31 @@ class PetListingForm extends React.Component {
     breed: '',
     city: '',
     profile: '',
-    medical_condition: ''
+    medical_condition: '',
+    file: null,
   };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  handleFileChange = event => {
+    this.setState({ file: event })
+  }
+
   handleFormSubmit = event => {
     event.preventDefault()
-    console.log(this.state, '>>>>>>>>>>>>>>>>')
+
+    if(this.props.isShelterOwner) {
+      this.props.createPetRequest(
+        this.state.name,
+        this.state.age,
+        this.state.risk,
+        this.state.breed,
+        this.state.file,
+        this.props.shelterId
+      );
+    }
   }
 
   render() {
@@ -61,6 +78,9 @@ class PetListingForm extends React.Component {
             <FormHelperText id="name-helper-text">Criticality of adoption</FormHelperText>
           </FormControl>
 
+
+          <input type="file" name="myImage" accept="image/*" onChange={ (e) => this.handleFileChange(e.target.files[0]) }/>
+
           <Button type='submit' className={classes.button} variant="raised" size="small">
             <Save className={classes.leftIcon} />
             Save
@@ -73,6 +93,19 @@ class PetListingForm extends React.Component {
 
 PetListingForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  createPetRequest: PropTypes.func.isRequired,
+  isShelterOwner: PropTypes.bool.isRequired,
 };
 
-export default withStyles(styles)(PetListingForm);
+const mapStateToProps = (state, ownProps) => ({
+  isShelterOwner: state.account.isShelterOwner,
+  shelterId: state.account.shelterId
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  createPetRequest: (name, age, risk, breed, file, shelterId) => (
+    dispatch(createPetRequest(name, age, risk, breed, file, shelterId))
+  )
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(PetListingForm))

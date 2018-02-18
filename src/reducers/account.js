@@ -11,6 +11,7 @@ const initialState = {
   balance: '',
   error: null,
   isShelterOwner: false,
+  shelterId: ''
 }
 
 const account = (state = initialState, action) => {
@@ -32,7 +33,8 @@ const account = (state = initialState, action) => {
       })
     case UPDATE_SHELTER_OWNER:
       return Object.assign({}, state, {
-        isShelterOwner: action.isShelterOwner
+        isShelterOwner: action.isShelterOwner,
+        shelterId: action.shelterId,
       })
 
     default:
