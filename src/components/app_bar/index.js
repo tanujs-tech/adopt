@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom'
 // import MenuIcon from 'material-ui-icons/Menu'
 import Logo from './logo.png'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
-
+import Popover from 'material-ui/Popover';
+import Menus from '../Menus'
+import { Menu } from 'material-ui';
 const styles = {
   root: {
     flexGrow: 1
@@ -39,7 +41,7 @@ function ButtonAppBar(props) {
   const { classes } = props
   return (
     <div className={classes.root}>
-      <AppBar className={classes.header} position='static' title={<img src="https://unsplash.it/40/40" />}>
+      <AppBar className={classes.header} position='static'>
         <Toolbar>
           <CardMedia
             className={classes.media}
@@ -49,8 +51,9 @@ function ButtonAppBar(props) {
           <Typography variant='title' color='inherit' className={classes.flex}>
             Paws on the block
           </Typography>
-          <Button className={classes.headerButton} component={Link} to="/add-pet">Add Pet</Button>
           <Button className={classes.headerButton} component={Link} to="/home">Home</Button>
+          <Menus/>
+          <Button className={classes.headerButton} component={Link} to="/my-pets">My Pets</Button>
         </Toolbar>
       </AppBar>
     </div>
