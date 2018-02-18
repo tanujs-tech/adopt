@@ -4,7 +4,8 @@ import { withStyles } from 'material-ui/styles'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
-import Paper from 'material-ui/Paper'
+import Paper from 'material-ui/Paper';
+import Details from '../Details';
 
 const styles = theme => ({
   card: {
@@ -21,7 +22,8 @@ const styles = theme => ({
   })
 })
 
-function DogCard (props) {
+
+function DogCard(props) {
   const { classes } = props
   return (
     <Card className={classes.card}>
@@ -48,6 +50,7 @@ function DogCard (props) {
         <Button size='small' color='primary'>
           Learn More
         </Button>
+        <Details details={props.details}/>
       </CardActions>
     </Card>
   )
@@ -57,7 +60,8 @@ DogCard.propTypes = {
   classes: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  description: PropTypes.string.isRequired,
+  details: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(DogCard)
